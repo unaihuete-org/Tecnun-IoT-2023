@@ -9,6 +9,7 @@
 1. TODO --> send a picture from phone to IOT central --> trigger a Logic App for Custom Vision??
     - Upload picture to IOT Central : https://learn.microsoft.com/en-us/azure/iot-central/core/howto-configure-file-uploads
         - SA --> public container!!
-1. Export Data (REPLACE, it uses Azure Data Explorer):https://learn.microsoft.com/en-us/azure/iot-central/core/quick-export-data
+    - Azure Function needed for image resize! https://community.dynamics.com/business/b/threadpunter/posts/azure-functions-resize-images-uploaded-to-blob-storage
+1. Analyze with Data Explorer:https://learn.microsoft.com/en-us/azure/iot-central/core/quick-export-data
 
 
