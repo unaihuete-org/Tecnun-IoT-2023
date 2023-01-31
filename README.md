@@ -69,9 +69,12 @@ To get you started quickly, this article uses the **IoT Plug and Play** smartpho
 
 Install the app on your smartphone from one of the app stores:
 
-    [![image](https://user-images.githubusercontent.com/64772417/215786495-4498fdaf-7aaf-43d8-b476-718182e2c953.png)](https://play.google.com/store/apps/details?id=com.iot_pnp)
 
-    [![image](https://user-images.githubusercontent.com/64772417/215787188-8b12d22c-af81-4708-b3eb-cc3c66c20700.png)](https://apps.apple.com/app/iot-plug-and-play/id1563783687)
+[![image](https://user-images.githubusercontent.com/64772417/215786495-4498fdaf-7aaf-43d8-b476-718182e2c953.png)](https://play.google.com/store/apps/details?id=com.iot_pnp)
+
+
+
+[![image](https://user-images.githubusercontent.com/64772417/215787188-8b12d22c-af81-4708-b3eb-cc3c66c20700.png)](https://apps.apple.com/app/iot-plug-and-play/id1563783687)
 
 To connect the **IoT Plug and Play** app to your Iot Central application:
 
@@ -108,6 +111,9 @@ Fell free to try the other commands.
 Get started with IoT Central rules. IoT Central rules let you automate actions that occur in response to specific conditions. The example in this quickstart uses accelerometer telemetry from the phone to trigger a rule when the phone is turned over.
 
 The smartphone app sends telemetry that includes values from the accelerometer sensor. The sensor works slightly differently on Android and iOS devices:
+
+- **Android**: when the phone is lying on its back, the z value is greater than **9**, when the phone is lying on its front, the z value is less than **-9**.
+- **iOS**: when the phone is lying on its back, the z value is less than **-0.9**, when the phone is lying on its front, the z value is greater than **0.9**.
 
 1. To add a new telemetry-based rule to your application, in the left pane, select **Rules**.
 
