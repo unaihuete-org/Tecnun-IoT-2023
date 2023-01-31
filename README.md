@@ -196,33 +196,68 @@ In our case we will use it to schedule a command execution.
 
 Wait for the job to execute succesfully. Once executed, your smartphone light should switch on. You can review the job history execution from the **Jobs** option on the left column and open the latest execution:
 
-![image](https://user-images.githubusercontent.com/64772417/215799102-08823bae-6b29-4564-87ed-fba740bde5cb.png)
+    ![image](https://user-images.githubusercontent.com/64772417/215799102-08823bae-6b29-4564-87ed-fba740bde5cb.png)
+
+## File upload from IoT device
+
+IoT Central lets you upload media and other files from connected devices to cloud storage. You configure the file upload capability in your IoT Central application, and then implement file uploads in your device code.
+
+Optionally, you can manage and preview files uploaded by your devices inside your IoT Central application.
+
+In order to do so, we need to link a Azure Storage Account, resource used to keep our files.
+
+### Create Azure Storage Account
+
+1. Go to the [Azure Portal](https://portal.azure.com/), and click on **Create a resource**.
+1. Search for **Storage Account** and click on **Create>Storage Account**. Provide the following properties.
+    - Resource Group : **Create new** > Name it **TecnunIotDay1** and click **OK**.
+    - Storage account name: Soomething unique, only lowercase allowed, for example **iotcentralNAMEsa**.
+    - Region: closest one, for example **West Europe**
+    - Performance: **Standard**
+    - Redundancy: **LRS**
+1. **Review** and **Create**. Open the resource once created.
+1. In the created Storage Account resource, go to **Containers** and click on **+Container**:
+    - Name: **Images**
+    - Public access level: **Container (anonymous...**
+1. **Create**: this will be the location were IOT device files will be uploaded.
+
+### Configure device file Uploads in IoT central
+
+Open the Iot central website and the previously created App:
+
+    ![image](https://user-images.githubusercontent.com/64772417/215863145-ddb724d9-a19b-4375-a49f-db5f30cdf76f.png)
+
+1. Navigate to the **Application** section in your application.
+
+1. Select **Device file storage**.
+
+1. Select the storage account and container(images) created before.
+
+1. To enable users to view and manage uploaded files inside IoT Central, set **Enable access to On.**
+
+1. Select **Save**. When the status shows **Configured**, you're ready to upload files from devices.
+
+    ![image](https://user-images.githubusercontent.com/64772417/215863557-e4c78465-2b4c-44fc-8dbd-5654a4fee627.png)
+
+### Test upload files for Plug and Play App
+
+1. Go to your smartphone, open the Plug and Play app, and choose the **Image upload** tab.
+
+    ![image](https://user-images.githubusercontent.com/64772417/215865111-bdf9ea69-52b4-4ba6-9078-3f46ed49b477.png)
+
+1. Select an image from gallery or take a picture with the camera. **Succesfully uploaded ...** will be shown when uploaded.
+1. Open the IoT Central website, go to your Device and select the **Files** to see the uploaded pictures.
+
+    ![image](https://user-images.githubusercontent.com/64772417/215865879-1b0ef6c7-dd3e-4942-844e-5a9b9e19aac5.png)
+
+1. Confirm the pictures are located in the previosly selected Storage Account. Open the Storage Account in the [Azure Portal](https://portal.azure.com/), go to **Containers > images** . You will find a new folder with your deviceID and the pictures will be located under the folder.
+
+    ![image](https://user-images.githubusercontent.com/64772417/215866460-9a9d27b5-16f0-47d8-9df8-3e7758f6b09a.png)
 
 
 
 
 
-
-
-    
-
-
-
-    
-
-
-
-
-
-
-
-
-1. DONE: Connect App to Iot Central and review data/commands available: https://learn.microsoft.com/en-us/azure/iot-central/core/quick-deploy-iot-central
-    - Overview gives default dashboard --> create one later
-1. DONE: Create rules https://learn.microsoft.com/en-us/azure/iot-central/core/quick-configure-rules?tabs=android
-    - I get -9 accelerometer face up phone
-    
-1. Create a Job --> Schedule sending of a command 
 1. TODO --> send a picture from phone to IOT central --> trigger a Logic App for Custom Vision??
     - Upload picture to IOT Central : https://learn.microsoft.com/en-us/azure/iot-central/core/howto-configure-file-uploads
         - SA --> public container!!
