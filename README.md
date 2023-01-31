@@ -11,5 +11,6 @@
         - SA --> public container!!
     - Azure Function needed for image resize! https://community.dynamics.com/business/b/threadpunter/posts/azure-functions-resize-images-uploaded-to-blob-storage
 1. Analyze with Data Explorer:https://learn.microsoft.com/en-us/azure/iot-central/core/quick-export-data
+1. Add Data Export to Storage Account.
 
 
