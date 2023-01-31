@@ -196,7 +196,37 @@ In our case we will use it to schedule a command execution.
 
 Wait for the job to execute succesfully. Once executed, your smartphone light should switch on. You can review the job history execution from the **Jobs** option on the left column and open the latest execution:
 
-    ![image](https://user-images.githubusercontent.com/64772417/215799102-08823bae-6b29-4564-87ed-fba740bde5cb.png)
+![image](https://user-images.githubusercontent.com/64772417/215799102-08823bae-6b29-4564-87ed-fba740bde5cb.png)
+    
+## Create an IoT central Dashboard (NOT GUIDED EXERCISE)
+
+In the IoT Central app, go to **Dashboards** and create your own dashboard showing the information collected from your IoT device (smartphone).
+
+    >Note: it is easier to start choosing **Start with Devices option**
+    
+![image](https://user-images.githubusercontent.com/64772417/215868037-d70057ee-4c08-4e97-a44b-aa9c72733a7e.png)
+
+    >Note: the dashboard will have to shown to the teacher by the end of the lab.
+
+## Data Explorer (NOT GUIDED EXERCISE)
+
+Azure IoT Central provides rich analytics capabilities to analyze historical trends and correlate telemetry from your devices. To get started, select Data explorer on the left pane.
+
+The analytics user interface has three main components:
+
+- **Data configuration panel**: On the configuration panel, select the device group for which you want to analyze the data. Next, select the telemetry that you want to analyze and select the aggregation method for each telemetry. The Group By control helps to group the data by using device properties as dimensions.
+
+
+
+- **Time control**: Use the time control to select the duration for which you want to analyze the data. You can drag either end of the time slider to select the time span. The time control also has an Interval size slider that controls the bucket or the interval size used to aggregate the data.
+
+- **Chart control**: The chart control visualizes the data as a line chart. You can toggle the visibility of specific lines by interacting with the chart legend.
+
+![image](https://user-images.githubusercontent.com/64772417/215869337-1f61e65a-8e9e-4b6a-bef7-f9002a1a37ae.png)
+
+**TO DO!**: Create a query to analyze the 3 acceleration axis (x,y,z), save the query and add it to the Dashboard. **Example shown below**.
+
+![image](https://user-images.githubusercontent.com/64772417/215870769-4c937518-61da-4944-8376-acbdcdd9357d.png)
 
 ## File upload from IoT device
 
@@ -225,7 +255,7 @@ In order to do so, we need to link a Azure Storage Account, resource used to kee
 
 Open the Iot central website and the previously created App:
 
-    ![image](https://user-images.githubusercontent.com/64772417/215863145-ddb724d9-a19b-4375-a49f-db5f30cdf76f.png)
+![image](https://user-images.githubusercontent.com/64772417/215863145-ddb724d9-a19b-4375-a49f-db5f30cdf76f.png)
 
 1. Navigate to the **Application** section in your application.
 
