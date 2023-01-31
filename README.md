@@ -41,7 +41,28 @@ IoT Central provides various industry-focused application templates to help you 
     ![image](https://user-images.githubusercontent.com/64772417/215784062-089649e6-7b7f-41be-81d3-834bc10bb309.png)
     
 
+## Register a Device (your smartphone)
 
+To connect a device to your IoT Central application, you need some connection information. An easy way to get this connection information is to register your device.
+
+To register your device:
+
+1. In IoT Central, navigate to the Devices page and select Add a device:
+
+    ![image](https://user-images.githubusercontent.com/64772417/215784492-6dc42c72-e3e5-4419-bf0b-8c911e95c076.png)
+    
+1. On the Create a new device page, accept the defaults, and then select Create.
+1. In the list of devices, click on the device name (it will have your own identifier):
+
+    ![image](https://user-images.githubusercontent.com/64772417/215785296-83c7fd3f-57fc-4b90-b31f-44900e3948d1.png)
+1. On the device page, select Connect and then QR Code:
+
+    ![image](https://user-images.githubusercontent.com/64772417/215785718-4d3d2ae3-9fc0-4021-a10e-40301c801204.png)
+
+Keep this page open. In the next section, you scan this QR code using the smartphone app to connect it to IoT Central.
+
+    > Note: The QR code contains the information, such as the registered device ID, your device needs to establish a connection to your IoT Central application. It saves you from the need to enter the connection information manually. ** Day 2 you will need this information**
+    
 
 
 
