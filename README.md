@@ -41,7 +41,7 @@ IoT Central provides various industry-focused application templates to help you 
     ![image](https://user-images.githubusercontent.com/64772417/215784062-089649e6-7b7f-41be-81d3-834bc10bb309.png)
     
 
-## Register a Device (your smartphone)
+## Register a Device
 
 To connect a device to your IoT Central application, you need some connection information. An easy way to get this connection information is to register your device.
 
@@ -63,7 +63,33 @@ Keep this page open. In the next section, you scan this QR code using the smartp
 
     > Note: The QR code contains the information, such as the registered device ID, your device needs to establish a connection to your IoT Central application. It saves you from the need to enter the connection information manually. ** Day 2 you will need this information**
     
+## Connect your device 
+    
+To get you started quickly, this article uses the **IoT Plug and Play** smartphone app as an IoT device. The app sends telemetry collected from the smartphone's sensors, responds to commands invoked from IoT Central, and reports property values to IoT Central.
 
+Install the app on your smartphone from one of the app stores:
+
+    [![image](https://user-images.githubusercontent.com/64772417/215786495-4498fdaf-7aaf-43d8-b476-718182e2c953.png)](https://play.google.com/store/apps/details?id=com.iot_pnp)
+
+    [![image](https://user-images.githubusercontent.com/64772417/215787188-8b12d22c-af81-4708-b3eb-cc3c66c20700.png)](https://apps.apple.com/app/iot-plug-and-play/id1563783687)
+
+To connect the **IoT Plug and Play** app to your Iot Central application:
+
+1. Open the IoT PnP app on your smartphone.
+
+1. On the welcome page, select **Scan QR code**. Point the smartphone's camera at the QR code. Then wait for a few seconds while the connection is established.
+
+1. On the telemetry page in the app, you can see the data the app is sending to IoT Central. On the logs page, you can see the device connecting and several initialization messages.
+
+To view the telemetry from the smartphone app in IoT Central:
+
+1. In IoT Central, navigate to the **Devices** page.
+
+1. In the list of devices, click on the device name (random id generated for you), then select Overview:
+
+    ![image](https://user-images.githubusercontent.com/64772417/215787592-48bd49de-2c33-4422-b3b2-5c221c8a23f2.png)
+
+    >IMPORTANT! The smartphone app only sends data when the screen is on.
 
 
 
