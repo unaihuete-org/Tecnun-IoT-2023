@@ -250,6 +250,9 @@ In order to do so, we need to link a Azure Storage Account, resource used to kee
     - Name: **Images**
     - Public access level: **Container (anonymous...**
 1. **Create**: this will be the location were IOT device files will be uploaded.
+1. On the Storage Account page, go to **Access Keys**, **copy and keep the key1**.
+![image](https://user-images.githubusercontent.com/64772417/215892436-389a5872-f61a-43a5-bc80-bf7c0905c0da.png)
+
 
 ### Configure device file Uploads in IoT central
 
@@ -284,7 +287,65 @@ Open the Iot central website and the previously created App:
 
     ![image](https://user-images.githubusercontent.com/64772417/215866460-9a9d27b5-16f0-47d8-9df8-3e7758f6b09a.png)
 
+## Analyze uploaded Images with Azure Computer Vision
 
+In this exercise, we are going to see how to integrate IoT solutions with Computer Vision AI by using an Azure Logic App.
+
+Azure Logic Apps is a cloud-based platform for creating and running automated workflows that integrate your apps, data, services, and systems.
+
+### Create Logic App
+
+1. Go to the Azure Portal, click on **Create a resource**. Search for **Logic App** and click on **Create > Logic App**.
+    - Resource Group: use same one used for Storage Account
+    - Logic App name: anything unique, for example, **iottecnun-NAME-la**
+    - Publish: **Workflow**
+    - Region: closest, for example, **West Europe**
+    - Plan type: **Consumption**
+    - Zone Redundancy: **Disabled**
+
+1. **Review + create** > **Create**.
+1. Once deployed, **Go to resource**.
+1. On the **Logic Apps Designer** page, select **Blank Logic App**.
+![image](https://user-images.githubusercontent.com/64772417/215891298-88936793-509f-435f-b6ce-7bf45adfd41e.png)
+1. We are going to define a trigger, whenever a new image is uploaded, the logic app will execute. Search for **Azure Blob Storage** and choose the trigger **When a blob is added or modified (properties only)(V2)**.
+1. Set up the connection for this blob trigger and create it:
+    - Connection name: **sa-conn**
+    - Authentication type: **Access key**
+    - Azure Storage Account  name or ... : **name of previously created Storage Account**
+    - Azure Storage Account Access Key: **paste Storage Account access key copied/stored before**
+    - **Create**
+
+1. Once the connection is setup, you can define the parameters for the **When a blob is added...** trigger:
+    - Storage account name: use connection...
+    - Container: this will be the folder where images are uploaded **images/YOURDEVICEID**.
+    - Number of blobs to return: **1**
+    - How often do you want to check for items: **1 Minute**
+
+1. Click on **+ New Step**. Search for **HTTP** and select it.
+
+TODO
+1. Click on **+ New Step**. Search for **Insert Entity (V2)(preview)** and select it.
+1. Setup the connection to **Azure Table Storage**:
+    - Connection name: **sa-table-conn**
+    - Authentication Type: **Access Key**
+    - Azure Storage Account  name or ... : **name of previously created Storage Account**
+    - Shared Storage key: **paste Storage Account access key copied/stored before**
+    - **Create**
+
+1. Once connection is setup, you can define the parameters for **Insert Entity (v2) (Preview)**
+    - Storage account name: use connection...
+    - Table: select **analyzedImages** table
+    - Entity: 
+        '''
+            {
+              "Image": "",
+              "PartitionKey": "",
+              "RowKey": "",
+              "SmartCaption": ""
+            }
+        '''
+        **Select variables shown in picture!**
+       
 
 
 
