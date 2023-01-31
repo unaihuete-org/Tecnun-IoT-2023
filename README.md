@@ -91,6 +91,118 @@ To view the telemetry from the smartphone app in IoT Central:
 
     >IMPORTANT! The smartphone app only sends data when the screen is on.
 
+## Control your device
+
+1. To send a command from IoT Central to your device, select the **Commands** view for your device. The smartphone app can respond to three commands:
+
+    ![image](https://user-images.githubusercontent.com/64772417/215789183-f50f1780-a5a1-4665-b552-068130d2148c.png)
+
+1. To make the light on your smartphone flash, use the **LightOn** command. Set the **duration** to three seconds, the **pulse interval** to five seconds, and the number of **pulses** to two. Select Run to send the command to the smartphone app. The light on your smartphone app flashes twice.
+
+1. To see the acknowledgment from the smartphone app, select command history.
+
+Fell free to try the other commands.
+
+## Create rules 
+
+Get started with IoT Central rules. IoT Central rules let you automate actions that occur in response to specific conditions. The example in this quickstart uses accelerometer telemetry from the phone to trigger a rule when the phone is turned over.
+
+The smartphone app sends telemetry that includes values from the accelerometer sensor. The sensor works slightly differently on Android and iOS devices:
+
+1. To add a new telemetry-based rule to your application, in the left pane, select **Rules**.
+
+1. To create a new rule, select **Create a rule**.
+
+1. Enter **Phone turned over** as the rule name.
+
+1. In the **Target devices** section, select **IoT Plug and Play mobile** as the **Device template**. This option filters the devices the rule applies to by device template type. You can add more filter criteria by selecting **+ Filter**.
+
+1. In the **Conditions** section, you define what triggers your rule. Use the following information to define a single condition based on accelerometer z-axis telemetry. This rule uses aggregation, so you receive a maximum of one email for each device every five minutes:
+
+    **Android**
+    | Field            | Value            |
+    |------------------|------------------|
+    | Time aggregation | On, 5 minutes    |
+    | Telemetry        | Acceleration / Z |
+    | Operator         | Is less than     |
+    | Aggregation      | Minimum          |
+    | Value            | -9               |
+
+    **iOS**
+    | Field            | Value            |
+    |------------------|------------------|
+    | Time aggregation | On, 5 minutes    |
+    | Telemetry        | Acceleration / Z |
+    | Operator         | Is greater than  |
+    | Aggregation      | Maximum          |
+    | Value            | 0.9              |
+
+    ![image](https://user-images.githubusercontent.com/64772417/215791578-ba708e05-4505-4b40-8013-9d2bd1dcc1cb.png)
+
+
+1. To add an email action to run when the rule triggers, in the **Actions** section, select **+ Email**.
+
+1. Use the information in the following table to define your action and then select **Done**:
+
+    | Setting      | Value                    |
+    |--------------|--------------------------|
+    | Display name | Your phone moved         |
+    | To           | Your email address       |
+    | Notes        | Your phone is face down! |
+
+    > NOTE: To receive an email notification, the email address must be a user ID in the application, and the user must have signed in to the application at least once. Ask help to the teacher if an another account should be added to IoT central.
+    
+1. Select **Save**. Your rule is now listed on the **Rules** page.
+
+Shortly after you save the rule, it becomes live. When the conditions defined in the rule are met, IoT Central sends an email to the address you specified in the action.
+
+To trigger the rule, make sure the smartphone app is sending data and then place it face down on your desk. After five minutes, IoT Central sends you an email to notify you that your smartphone is face down.
+
+After your testing is complete, disable the rule to stop receiving the notification emails in your inbox.
+
+## Create a Job
+
+You can use Azure IoT Central to manage your connected devices at scale through jobs. Jobs let you do bulk updates to device and cloud properties and run commands.
+
+In our case we will use it to schedule a command execution.
+
+1. In the Azure IoT Central website, on the left pane, select **Jobs**.
+
+1. Select + New.
+
+1. On the **Configure your job** page, enter a name (for example, **LightsNightOn**) and description to identify the job you're creating.
+
+    ![image](https://user-images.githubusercontent.com/64772417/215795287-30909369-2b0a-4b81-a17c-5a3df19b3a10.png)
+    
+1. Enter your **Iot Plug and Play** devices as your **Device Group**.
+
+1. Choose **Command** option for *Job Type** and select command "Lighton".
+
+    - Provide following parameters:
+        - Duration: 5
+        - Pulse interval: 3
+        - Pulses: 3
+        
+1. Click on **Next**.
+
+1. On the **Delivery Options** page, click **Next**.
+1. On the **Schedule** page, **enable** schedule. Define a **one-time** recurrent job, starting 3 minutes after your local time (in order to execute it 3 minute later). 1. Click on **Next** , review the settings and **Schedule**.
+
+Wait for the job to execute succesfully. Once executed, your smartphone light should switch on. You can review the job history execution from the **Jobs** option on the left column and open the latest execution:
+
+![image](https://user-images.githubusercontent.com/64772417/215799102-08823bae-6b29-4564-87ed-fba740bde5cb.png)
+
+
+
+
+
+
+
+    
+
+
+
+    
 
 
 
@@ -99,21 +211,12 @@ To view the telemetry from the smartphone app in IoT Central:
 
 
 
-
-
-
-
-
-
-
-
-
-1. Connect App to Iot Central and review data/commands available: https://learn.microsoft.com/en-us/azure/iot-central/core/quick-deploy-iot-central
+1. DONE: Connect App to Iot Central and review data/commands available: https://learn.microsoft.com/en-us/azure/iot-central/core/quick-deploy-iot-central
     - Overview gives default dashboard --> create one later
-1. Create rules https://learn.microsoft.com/en-us/azure/iot-central/core/quick-configure-rules?tabs=android
+1. DONE: Create rules https://learn.microsoft.com/en-us/azure/iot-central/core/quick-configure-rules?tabs=android
     - I get -9 accelerometer face up phone
     
-1. Create a Job --> Schedule sending of a command
+1. Create a Job --> Schedule sending of a command 
 1. TODO --> send a picture from phone to IOT central --> trigger a Logic App for Custom Vision??
     - Upload picture to IOT Central : https://learn.microsoft.com/en-us/azure/iot-central/core/howto-configure-file-uploads
         - SA --> public container!!
