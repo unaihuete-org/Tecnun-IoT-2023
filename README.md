@@ -61,7 +61,7 @@ To register your device:
 
 Keep this page open. In the next section, you scan this QR code using the smartphone app to connect it to IoT Central.
 
-    > Note: The QR code contains the information, such as the registered device ID, your device needs to establish a connection to your IoT Central application. It saves you from the need to enter the connection information manually. ** Day 2 you will need this information**
+> Note: The QR code contains the information, such as the registered device ID, your device needs to establish a connection to your IoT Central application. It saves you from the need to enter the connection information manually. **Day 2 you will need this information**
     
 ## Connect your device 
     
@@ -92,7 +92,7 @@ To view the telemetry from the smartphone app in IoT Central:
 
     ![image](https://user-images.githubusercontent.com/64772417/215787592-48bd49de-2c33-4422-b3b2-5c221c8a23f2.png)
 
-    >IMPORTANT! The smartphone app only sends data when the screen is on.
+    >**IMPORTANT!** The smartphone app only sends data when the screen is on.
 
 ## Control your device
 
@@ -202,11 +202,11 @@ Wait for the job to execute succesfully. Once executed, your smartphone light sh
 
 In the IoT Central app, go to **Dashboards** and create your own dashboard showing the information collected from your IoT device (smartphone).
 
-    >Note: it is easier to start choosing "Start with Devices option"
+>Note: it is easier to start choosing **Start with Devices option**
     
 ![image](https://user-images.githubusercontent.com/64772417/215868037-d70057ee-4c08-4e97-a44b-aa9c72733a7e.png)
 
-    >Note: the dashboard will have to shown to the teacher by the end of the lab.
+>Note: the dashboard will have to be shown to the teacher by the end of the lab.
 
 ## Data Explorer (NOT GUIDED EXERCISE)
 
@@ -224,7 +224,7 @@ The analytics user interface has three main components:
 
 ![image](https://user-images.githubusercontent.com/64772417/215869337-1f61e65a-8e9e-4b6a-bef7-f9002a1a37ae.png)
 
-**TO DO!**: Create a query to analyze the 3 acceleration axis (x,y,z), save the query and add it to the Dashboard. **Example shown below**.
+**TO DO!**  Create a query to analyze the 3 acceleration axis (x,y,z), save the query and add it to the Dashboard. **Example shown below**.
 
 ![image](https://user-images.githubusercontent.com/64772417/215870769-4c937518-61da-4944-8376-acbdcdd9357d.png)
 
@@ -250,7 +250,7 @@ In order to do so, we need to link a Azure Storage Account, resource used to kee
     - Name: **Images**
     - Public access level: **Container (anonymous...**
 1. **Create**: this will be the location were IOT device files will be uploaded.
-1. On the Storage Account page, go to **Access Keys**, **copy and keep the key1**.
+1. On the Storage Account page, go to **Access Keys**, **copy and keep the key1 and Storage account name**.
 ![image](https://user-images.githubusercontent.com/64772417/215892436-389a5872-f61a-43a5-bc80-bf7c0905c0da.png)
 
 
