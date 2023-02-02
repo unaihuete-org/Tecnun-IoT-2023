@@ -202,7 +202,7 @@ Wait for the job to execute succesfully. Once executed, your smartphone light sh
 
 In the IoT Central app, go to **Dashboards** and create your own dashboard showing the information collected from your IoT device (smartphone).
 
-    >Note: it is easier to start choosing **Start with Devices option**
+    >Note: it is easier to start choosing "Start with Devices option"
     
 ![image](https://user-images.githubusercontent.com/64772417/215868037-d70057ee-4c08-4e97-a44b-aa9c72733a7e.png)
 
@@ -293,6 +293,26 @@ In this exercise, we are going to see how to integrate IoT solutions with Comput
 
 Azure Logic Apps is a cloud-based platform for creating and running automated workflows that integrate your apps, data, services, and systems.
 
+### Create table in Storage Account for Analyzedimages
+
+1. Go to the Azure Portal, and open the previously created **Storage Account**. Open the **Tables** option under "Data Storage". We will create a table to contain information around the image file analyzed and the AI given caption.
+
+1. Click on **+ Table** and create a table called **analyzedTables**
+
+![image](https://user-images.githubusercontent.com/64772417/216347839-f1b4ab72-6e58-4cc1-9324-24589ed37ae7.png)
+
+### Create a Computer Vision resource
+
+Lets create a Computer Vision AI resource to get automatic caption of pictures we upload from the device.
+
+1. Go to the Azure Portal, click on **Create a resource**. Search for **Computer Vision** and click on **Create > Computer Vision**.
+
+1. Select same Resource Group/Region, give a unique name like **cvtecnuniot-NAME** and pricing tier **Standard S1**. Click on **Review + create** > **Create**.
+
+1. **Go to resource** when created, open the **Keys and Endpoint** tab and copy the **endpoint** and **key1** in a notepad.
+
+![image](https://user-images.githubusercontent.com/64772417/216349826-0f8f44b1-9033-482b-a316-80366fe6888f.png)
+
 ### Create Logic App
 
 1. Go to the Azure Portal, click on **Create a resource**. Search for **Logic App** and click on **Create > Logic App**.
@@ -321,9 +341,79 @@ Azure Logic Apps is a cloud-based platform for creating and running automated wo
     - Number of blobs to return: **1**
     - How often do you want to check for items: **1 Minute**
 
-1. Click on **+ New Step**. Search for **HTTP** and select it.
+1. Click on **+ New Step**. Search for **HTTP** and select it. When are going to call the Computer Vision resource using HTTP.
 
-TODO
+    >Note: there is also a predefined action for Computer Vision, but is it using the old API version for computer vision, which has a image size limit of 5MB instead of 20MB.
+    
+1.Provide the following parameters to the **HTTP** action (check the screenshot for help):
+    - Method : **POST**
+    - URI: it will be composed of your Computer Vision endpoint + "/computervision/imageanalysis:analyze?api-version=2022-10-12-preview&features=Description&language=en". For example **https://ai102computervisionunai.cognitiveservices.azure.com/computervision/imageanalysis:analyze?api-version=2022-10-12-preview&features=Description&language=en**
+    - Headers
+        - Content-Type | application/json
+        - Ocp-Apim-Subscription-Key | **the KEY1 copied before**
+        
+    
+    - Body
+    ```
+        {
+            "url": "https://iotcentralsaunai.blob.core.windows.netVARIABLE}"
+        }
+     ```
+        >NOTE. replace the variable to have something equal to next picture!
+
+![image](https://user-images.githubusercontent.com/64772417/216351534-fa5d9678-3f11-4089-8ee1-678a65c38441.png)
+
+1. Click on **+ New Step**. Search for **Parse JSON** and select it. This step will create Logic App variables based on the JSON reply given by Computer Vision service.
+
+1. On the **Parse JSON** action, add the **Body** variable for "Content" (see picture below). On **Schema** add the following:
+
+```
+{
+    "properties": {
+        "descriptionResult": {
+            "properties": {
+                "values": {
+                    "items": {
+                        "properties": {
+                            "confidence": {
+                                "type": "number"
+                            },
+                            "text": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "text",
+                            "confidence"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "metadata": {
+            "properties": {
+                "height": {
+                    "type": "integer"
+                },
+                "width": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "modelVersion": {
+            "type": "string"
+        }
+    },
+    "type": "object"
+}
+```
+![image](https://user-images.githubusercontent.com/64772417/216352999-8bcb6e67-cbf7-48e3-8570-035d5b9d76d9.png)
+
+
 1. Click on **+ New Step**. Search for **Insert Entity (V2)(preview)** and select it.
 1. Setup the connection to **Azure Table Storage**:
     - Connection name: **sa-table-conn**
@@ -338,22 +428,39 @@ TODO
     - Entity: 
         '''
             {
-              "Image": "",
-              "PartitionKey": "",
-              "RowKey": "",
-              "SmartCaption": ""
+              "Image": "VARIABLE",
+              "PartitionKey": "VARIABLE",
+              "RowKey": "VARIABLE",
+              "SmartCaption": "VARIABLE"
             }
         '''
-        **Select variables shown in picture!**
-       
+        **Select VARIABLE shown in picture!**
 
+1. Your last action should look similar to the one shown below:
 
+![image](https://user-images.githubusercontent.com/64772417/216353174-dcb29255-7c59-4afb-a446-5cd430fed192.png)
 
-1. TODO --> send a picture from phone to IOT central --> trigger a Logic App for Custom Vision??
-    - Upload picture to IOT Central : https://learn.microsoft.com/en-us/azure/iot-central/core/howto-configure-file-uploads
-        - SA --> public container!!
-    - Azure Function needed for image resize! https://community.dynamics.com/business/b/threadpunter/posts/azure-functions-resize-images-uploaded-to-blob-storage
-1. Analyze with Data Explorer:https://learn.microsoft.com/en-us/azure/iot-central/core/quick-export-data
-1. Add Data Export to Storage Account.
+### Test the Logic App
+
+1. Upload a picture from the **Plug and Play IOT** smartphone app. When the picture gets uploaded, it should trigger the designed Logic App. You can review the Logic App execution on its **Overview** page, **Run history**. You can open the execution to check details.
+
+![image](https://user-images.githubusercontent.com/64772417/216355350-1113e912-d08a-4088-9df5-786e962779f8.png)
+
+1. if the Logic App execute succesfully, we should be able to see the created Storage Account table. Go to your **Storage Account**, open the **Storage browser** tab, **Tables** and the **analyzedImage** table. You should see the table rows created by the Logic App, the image file together with the AI given caption. 
+
+![image](https://user-images.githubusercontent.com/64772417/216356237-0e4ae948-cc76-4c6a-8b8d-11995271a59b.png)
+
+# End of Lab
+
+Call your teacher and review together all the solution built during the instructions:
+
+- Iot Central app
+    - Job
+    - Dashboard
+    - Rules
+    - Data Explorer
+    - Image Upload
+- Logic App
+
 
 
