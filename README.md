@@ -448,6 +448,7 @@ Lets create a Computer Vision AI resource to get automatic caption of pictures w
 
 1. Upload a picture from the **Plug and Play IOT** smartphone app. When the picture gets uploaded, it should trigger the designed Logic App. You can review the Logic App execution on its **Overview** page, **Run history**. You can open the execution to check details.
 
+![image](https://user-images.githubusercontent.com/64772417/216376666-15aa7953-0abd-43b0-a8a3-a9a0f64b6f85.png)
 
 
 1. if the Logic App execute succesfully, we should be able to see the created Storage Account table. Go to your **Storage Account**, open the **Storage browser** tab, **Tables** and the **analyzedImage** table. You should see the table rows created by the Logic App, the image file together with the AI given caption. 
