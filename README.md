@@ -1,6 +1,6 @@
 # Tecnun IoT DAY 1
 
-## Introduction
+# Introduction
 
 During this first day you will design an IoT solution in Azure, using your smartphone as an Iot device with IoT Plug and Play smartphone app.
 
@@ -10,7 +10,7 @@ IoT Plug and Play is a new capability in Azure IoT Central that makes it easier 
 
 ![image](https://user-images.githubusercontent.com/64772417/215782493-6a560431-4d81-460c-865c-968cdb97d733.png)
 
-## Create an IoT Central application
+# Create an IoT Central application
 
 Navigate to the [Azure IoT Central Build](https://aka.ms/iotcentral) site. Then sign in with the account associated with your Azure subscription.
 
@@ -41,7 +41,7 @@ IoT Central provides various industry-focused application templates to help you 
     ![image](https://user-images.githubusercontent.com/64772417/215784062-089649e6-7b7f-41be-81d3-834bc10bb309.png)
     
 
-## Register a Device
+# Register a Device
 
 To connect a device to your IoT Central application, you need some connection information. An easy way to get this connection information is to register your device.
 
@@ -63,7 +63,7 @@ Keep this page open. In the next section, you scan this QR code using the smartp
 
 > Note: The QR code contains the information, such as the registered device ID, your device needs to establish a connection to your IoT Central application. It saves you from the need to enter the connection information manually. **Day 2 you will need this information**
     
-## Connect your device 
+# Connect your device 
     
 To get you started quickly, this article uses the **IoT Plug and Play** smartphone app as an IoT device. The app sends telemetry collected from the smartphone's sensors, responds to commands invoked from IoT Central, and reports property values to IoT Central.
 
@@ -94,7 +94,7 @@ To view the telemetry from the smartphone app in IoT Central:
 
     >**IMPORTANT!** The smartphone app only sends data when the screen is on.
 
-## Control your device
+# Control your device
 
 1. To send a command from IoT Central to your device, select the **Commands** view for your device. The smartphone app can respond to three commands:
 
@@ -106,7 +106,7 @@ To view the telemetry from the smartphone app in IoT Central:
 
 Fell free to try the other commands.
 
-## Create rules 
+# Create rules 
 
 Get started with IoT Central rules. IoT Central rules let you automate actions that occur in response to specific conditions. The example in this quickstart uses accelerometer telemetry from the phone to trigger a rule when the phone is turned over.
 
@@ -166,7 +166,7 @@ To trigger the rule, make sure the smartphone app is sending data and then place
 
 After your testing is complete, disable the rule to stop receiving the notification emails in your inbox.
 
-## Create a Job
+# Create a Job
 
 You can use Azure IoT Central to manage your connected devices at scale through jobs. Jobs let you do bulk updates to device and cloud properties and run commands.
 
@@ -198,7 +198,7 @@ Wait for the job to execute succesfully. Once executed, your smartphone light sh
 
 ![image](https://user-images.githubusercontent.com/64772417/215799102-08823bae-6b29-4564-87ed-fba740bde5cb.png)
     
-## Create an IoT central Dashboard (NOT GUIDED EXERCISE)
+# Create an IoT central Dashboard (NOT GUIDED EXERCISE)
 
 In the IoT Central app, go to **Dashboards** and create your own dashboard showing the information collected from your IoT device (smartphone).
 
@@ -208,7 +208,7 @@ In the IoT Central app, go to **Dashboards** and create your own dashboard showi
 
 >Note: the dashboard will have to be shown to the teacher by the end of the lab.
 
-## Data Explorer (NOT GUIDED EXERCISE)
+# Data Explorer (NOT GUIDED EXERCISE)
 
 Azure IoT Central provides rich analytics capabilities to analyze historical trends and correlate telemetry from your devices. To get started, select Data explorer on the left pane.
 
@@ -228,7 +228,7 @@ The analytics user interface has three main components:
 
 ![image](https://user-images.githubusercontent.com/64772417/215870769-4c937518-61da-4944-8376-acbdcdd9357d.png)
 
-## File upload from IoT device
+# File upload from IoT device
 
 IoT Central lets you upload media and other files from connected devices to cloud storage. You configure the file upload capability in your IoT Central application, and then implement file uploads in your device code.
 
@@ -236,7 +236,7 @@ Optionally, you can manage and preview files uploaded by your devices inside you
 
 In order to do so, we need to link a Azure Storage Account, resource used to keep our files.
 
-### Create Azure Storage Account
+## Create Azure Storage Account
 
 1. Go to the [Azure Portal](https://portal.azure.com/), and click on **Create a resource**.
 1. Search for **Storage Account** and click on **Create>Storage Account**. Provide the following properties.
@@ -254,7 +254,7 @@ In order to do so, we need to link a Azure Storage Account, resource used to kee
 ![image](https://user-images.githubusercontent.com/64772417/215892436-389a5872-f61a-43a5-bc80-bf7c0905c0da.png)
 
 
-### Configure device file Uploads in IoT central
+## Configure device file Uploads in IoT central
 
 Open the Iot central website and the previously created App:
 
@@ -272,7 +272,7 @@ Open the Iot central website and the previously created App:
 
     ![image](https://user-images.githubusercontent.com/64772417/215863557-e4c78465-2b4c-44fc-8dbd-5654a4fee627.png)
 
-### Test upload files for Plug and Play App
+## Test upload files for Plug and Play App
 
 1. Go to your smartphone, open the Plug and Play app, and choose the **Image upload** tab.
 
@@ -283,17 +283,17 @@ Open the Iot central website and the previously created App:
 
     ![image](https://user-images.githubusercontent.com/64772417/215865879-1b0ef6c7-dd3e-4942-844e-5a9b9e19aac5.png)
 
-1. Confirm the pictures are located in the previosly selected Storage Account. Open the Storage Account in the [Azure Portal](https://portal.azure.com/), go to **Containers > images** . You will find a new folder with your deviceID and the pictures will be located under the folder.
+1. Confirm the pictures are located in the previosly selected Storage Account. Open the Storage Account in the [Azure Portal](https://portal.azure.com/), go to **Containers > images** . You will find a new folder with **your deviceID** and the pictures will be located under the folder **images/YOUR-DEVICE-ID**.
 
     ![image](https://user-images.githubusercontent.com/64772417/215866460-9a9d27b5-16f0-47d8-9df8-3e7758f6b09a.png)
 
-## Analyze uploaded Images with Azure Computer Vision
+# Analyze uploaded Images with Azure Computer Vision
 
 In this exercise, we are going to see how to integrate IoT solutions with Computer Vision AI by using an Azure Logic App.
 
 Azure Logic Apps is a cloud-based platform for creating and running automated workflows that integrate your apps, data, services, and systems.
 
-### Create table in Storage Account for Analyzedimages
+## Create table in Storage Account for Analyzedimages
 
 1. Go to the Azure Portal, and open the previously created **Storage Account**. Open the **Tables** option under "Data Storage". We will create a table to contain information around the image file analyzed and the AI given caption.
 
@@ -301,7 +301,7 @@ Azure Logic Apps is a cloud-based platform for creating and running automated wo
 
 ![image](https://user-images.githubusercontent.com/64772417/216347839-f1b4ab72-6e58-4cc1-9324-24589ed37ae7.png)
 
-### Create a Computer Vision resource
+## Create a Computer Vision resource
 
 Lets create a Computer Vision AI resource to get automatic caption of pictures we upload from the device.
 
@@ -313,7 +313,7 @@ Lets create a Computer Vision AI resource to get automatic caption of pictures w
 
 ![image](https://user-images.githubusercontent.com/64772417/216349826-0f8f44b1-9033-482b-a316-80366fe6888f.png)
 
-### Create Logic App
+## Create Logic App
 
 1. Go to the Azure Portal, click on **Create a resource**. Search for **Logic App** and click on **Create > Logic App**.
     - Resource Group: use same one used for Storage Account
@@ -327,7 +327,7 @@ Lets create a Computer Vision AI resource to get automatic caption of pictures w
 1. Once deployed, **Go to resource**.
 1. On the **Logic Apps Designer** page, select **Blank Logic App**.
 ![image](https://user-images.githubusercontent.com/64772417/215891298-88936793-509f-435f-b6ce-7bf45adfd41e.png)
-1. We are going to define a trigger, whenever a new image is uploaded, the logic app will execute. Search for **Azure Blob Storage** and choose the trigger **When a blob is added or modified (properties only)(V2)**.
+1. We are going to define a blob trigger, whenever a new image is uploaded, the logic app will execute. Search for **Azure Blob Storage** and choose the trigger **When a blob is added or modified (properties only)(V2)**.
 1. Set up the connection for this blob trigger and create it:
     - Connection name: **sa-conn**
     - Authentication type: **Access key**
@@ -345,21 +345,25 @@ Lets create a Computer Vision AI resource to get automatic caption of pictures w
 
     >Note: there is also a predefined action for Computer Vision, but is it using the old API version for computer vision, which has a image size limit of 5MB instead of 20MB.
     
-1.Provide the following parameters to the **HTTP** action (check the screenshot for help):
-    - Method : **POST**
+1. Provide the following parameters to the **HTTP** action (check the screenshot for help) :
+
+    - Method: **POST**
+
     - URI: it will be composed of your Computer Vision endpoint + "/computervision/imageanalysis:analyze?api-version=2022-10-12-preview&features=Description&language=en". For example **https://ai102computervisionunai.cognitiveservices.azure.com/computervision/imageanalysis:analyze?api-version=2022-10-12-preview&features=Description&language=en**
+
     - Headers
         - Content-Type | application/json
         - Ocp-Apim-Subscription-Key | **the KEY1 copied before**
         
     
     - Body
+
     ```
         {
-            "url": "https://iotcentralsaunai.blob.core.windows.netVARIABLE}"
+            "url": "https://iotcentralsaunai.blob.core.windows.net VARIABLE}"
         }
      ```
-        >NOTE. replace the variable to have something equal to next picture!
+    >NOTE. replace the variable to have something equal to next picture!
 
 ![image](https://user-images.githubusercontent.com/64772417/216351534-fa5d9678-3f11-4089-8ee1-678a65c38441.png)
 
@@ -367,50 +371,50 @@ Lets create a Computer Vision AI resource to get automatic caption of pictures w
 
 1. On the **Parse JSON** action, add the **Body** variable for "Content" (see picture below). On **Schema** add the following:
 
-```
-{
-    "properties": {
-        "descriptionResult": {
-            "properties": {
-                "values": {
-                    "items": {
-                        "properties": {
-                            "confidence": {
-                                "type": "number"
+    ```
+    {
+        "properties": {
+            "descriptionResult": {
+                "properties": {
+                    "values": {
+                        "items": {
+                            "properties": {
+                                "confidence": {
+                                    "type": "number"
+                                },
+                                "text": {
+                                    "type": "string"
+                                }
                             },
-                            "text": {
-                                "type": "string"
-                            }
+                            "required": [
+                                "text",
+                                "confidence"
+                            ],
+                            "type": "object"
                         },
-                        "required": [
-                            "text",
-                            "confidence"
-                        ],
-                        "type": "object"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "metadata": {
-            "properties": {
-                "height": {
-                    "type": "integer"
+                        "type": "array"
+                    }
                 },
-                "width": {
-                    "type": "integer"
-                }
+                "type": "object"
             },
-            "type": "object"
+            "metadata": {
+                "properties": {
+                    "height": {
+                        "type": "integer"
+                    },
+                    "width": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "modelVersion": {
+                "type": "string"
+            }
         },
-        "modelVersion": {
-            "type": "string"
-        }
-    },
-    "type": "object"
-}
-```
+        "type": "object"
+    }
+    ```
 ![image](https://user-images.githubusercontent.com/64772417/216352999-8bcb6e67-cbf7-48e3-8570-035d5b9d76d9.png)
 
 
@@ -440,11 +444,11 @@ Lets create a Computer Vision AI resource to get automatic caption of pictures w
 
 ![image](https://user-images.githubusercontent.com/64772417/216353174-dcb29255-7c59-4afb-a446-5cd430fed192.png)
 
-### Test the Logic App
+## Test the Logic App
 
 1. Upload a picture from the **Plug and Play IOT** smartphone app. When the picture gets uploaded, it should trigger the designed Logic App. You can review the Logic App execution on its **Overview** page, **Run history**. You can open the execution to check details.
 
-![image](https://user-images.githubusercontent.com/64772417/216355350-1113e912-d08a-4088-9df5-786e962779f8.png)
+
 
 1. if the Logic App execute succesfully, we should be able to see the created Storage Account table. Go to your **Storage Account**, open the **Storage browser** tab, **Tables** and the **analyzedImage** table. You should see the table rows created by the Logic App, the image file together with the AI given caption. 
 
