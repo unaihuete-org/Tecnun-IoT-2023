@@ -32,8 +32,8 @@ IoT Central provides various industry-focused application templates to help you 
 
 1. For this quickstart, leave the pricing plan set to **Standard 0**.
 
-1. Select your subscription in the Azure subscription drop-down.
-
+1. Select the Directory **Tecnun2023outlook.onmicrosoft.com**
+1. Select subscription **Azure subscription 1**
 1. Select your closest location in the Location drop-down (for example, "West Europe")
 
 1. Review the Terms and Conditions, and select Create at the bottom of the page. After a few seconds, your IoT Central application is ready to use:
